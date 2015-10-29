@@ -21,8 +21,12 @@ fwrite($gameFile, json_encode($playerData,true));
 //Deconde json file as associative array and count # of enties
 $gameData = json_decode(file_get_contents($gamefile),true); 	//I'm an albatroz
 
+//Check if both player inputs are in file
 if (count($gameData)>1){
-
+	//Delete gameFile
+	$deleteFile=unlink('game.json');
+	
+	//Play Game
 	if($gameData[0]['selection']==$gameData[1]['selection']){
 		echo "Draw";
 	//Player 1 Rock
